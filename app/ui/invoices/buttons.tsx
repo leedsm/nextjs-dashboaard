@@ -26,12 +26,14 @@ export function UpdateInvoice({id}: { id: string }) {
 }
 
 export function DeleteInvoice({ id }: { id: string }) {
-    "use client"
+    const deleteInvoiceWithId = deleteInvoice.bind(null, id);
+
     return (
-        <form action={deleteInvoice}>
-            <input type="hidden" name="id" value={id} />
-            <button className="rounded-md border p-1">
-                <TrashIcon className="w-4" />
+        <form action={deleteInvoiceWithId}>
+            {/*<input type="hidden" name="id" value={id} />*/}
+            <button className="rounded-md border p-2 hover:bg-gray-100">
+                <span className="sr-only">Delete</span>
+                <TrashIcon className="w-5" />
             </button>
         </form>
     );
